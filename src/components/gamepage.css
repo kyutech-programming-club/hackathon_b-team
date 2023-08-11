@@ -1,5 +1,6 @@
 .timer {
     color: rgb(255, 255, 255); /* タイマーの文字色 */
+    font-size: 40px;
   }
   
   .timer-stopped {

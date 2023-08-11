@@ -8,7 +8,7 @@ import {
   Navigate
 } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import './Mypage.css';
 
 const Mypage = () => {
   const [user, setUser] = useState("");
@@ -37,22 +37,26 @@ const Mypage = () => {
             <Navigate to={`/login/`} />
           ) : (
             <>
-            <h1>Home</h1>
-            <p>
+          
+            <p className="head">Home</p>
+            <p className="mid">
               ルール説明
             </p>
-            <p>
+            <p className="mid">
               startを押すとカウントダウンが始まる
               <br />
               出てくる広告を全部消して
               <br />
               タイムを競おう
             </p>
+            <br />
                 <Link to="/gamepage">start</Link>
               <br></br>
               <Link to="/ranking">ランキング</Link>
               <br></br>
+              
               <button onClick={logout}>ログアウト</button>
+              
             </>
           )}
         </>
