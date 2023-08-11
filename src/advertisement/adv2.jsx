@@ -1,15 +1,27 @@
+import React, { useState } from 'react';
 
-function Adv2() {
-    return (
-      <div style={{position:"absolute",top:"100px",left:"300px"}}>
-  
+const Adv2 = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsOn(prevState => !prevState);
+  };
+
+  return (
+    <div style={{zIndex:40}}>
+      <h3></h3>
+      <p> {isOn ? 
+     ""
+      :<div >
+      <img style={{width:"270px",top:"20px",left:"200px",position:"absolute"}} src="https://www.kyutech.ac.jp/archives/025/201907/large-ac3c915465b74aaec1d59643eaa3b840.jpg" alt="image" />
+      <button style={{top:"35px",left:"440px",position:"absolute"}} onClick={toggleSwitch}>×</button>  
+     
+      </div>}</p>
     
-      <img style={{position:"relative",width:"200px"}} src="https://scontent-nrt1-1.xx.fbcdn.net/v/t39.30808-6/211261222_2485057834972074_4438485092143102375_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=mjY6zraSuZ8AX_felo2&_nc_ht=scontent-nrt1-1.xx&oh=00_AfB-UYwb5I1jZ41uMFrEaxfw1PSGyyGPbv97k9HLwTX7wA&oe=64DB0597" />
-<button style={{position:"absolute",top:0,left:170}}>×</button>   
-      
-      </div>
-      
-    );
-  }
-  
-  export default Adv2
+     
+    </div>
+  );
+};
+
+
+export default Adv2;

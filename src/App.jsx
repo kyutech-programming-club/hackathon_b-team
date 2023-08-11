@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './components/Home';
-import { Page1 } from './components/gamepage';
+import { Gamepage1 } from './components/gamepage';
 import './App.css';
 
-function App() {
+function App () {
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/gamepage" element={<Page1 />} />
+       
+          <Route path="/" element={<Home/>} />
+          <Route path="/gamepage" element={<Gamepage1 />} />
+          
         </Routes>
       </div>
     </BrowserRouter>
