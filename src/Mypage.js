@@ -38,6 +38,16 @@ const Mypage = () => {
           ) : (
             <>
             <h1>Home</h1>
+            <p>
+              ルール説明
+            </p>
+            <p>
+              startを押すとカウントダウンが始まる
+              <br />
+              出てくる広告を全部消して
+              <br />
+              タイムを競おう
+            </p>
                 <Link to="/gamepage">start</Link>
               <br></br>
               <Link to="/ranking">ランキング</Link>

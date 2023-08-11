@@ -68,14 +68,14 @@ export const Page1 = () => {
               Result: {timer.toFixed(1)} seconds
             </p>
           )}
+            <div>
+      ここにゲームを置く
+            </div>
           {isRunning && (
             <button onClick={handleStop}>Complete</button> // タイマーを停止するボタン
           )}
         </>
       )}
-     <div>
-      ここにゲームを置く
-     </div>
       <Link to="/">Back to Home</Link>
     </div>
   );
