@@ -2,11 +2,34 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './gamepage.css';
+import { doc, setDoc, collection } from "firebase/firestore";
+import { db, auth } from "../FirebaseConfig";
+
+
 export const Page1 = () => {
   const [countdown, setCountdown] = useState(3);
   const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(true); // 最初はタイマーを動作させる
   const [isTimerVisible, setIsTimerVisible] = useState(false); // タイマー表示の制御
+  const handleStop = () => {
+    setIsRunning(false); // タイマー停止
+    const user = auth.currentUser;
+
+    if (user) {
+      const rankingRef = doc(collection(db, "rankings"));
+      setDoc(rankingRef, {
+        userId: user.uid,
+        time: timer.toFixed(1), // タイマーの値を保存
+        timestamp: new Date(),
+      })
+        .then(() => {
+          // 保存完了後の処理
+        })
+        .catch((error) => {
+          // エラーハンドリング
+        });
+    }
+  };
 
   useEffect(() => {
     let countdownInterval;
@@ -31,9 +54,7 @@ export const Page1 = () => {
     };
   }, [countdown, isRunning]);
 
-  const handleStop = () => {
-    setIsRunning(false); // タイマー停止
-  };
+
 
   return (
     <div>
@@ -47,14 +68,14 @@ export const Page1 = () => {
               Result: {timer.toFixed(1)} seconds
             </p>
           )}
+            <div>
+      ここにゲームを置く
+            </div>
           {isRunning && (
             <button onClick={handleStop}>Complete</button> // タイマーを停止するボタン
           )}
         </>
       )}
-     <div>
-      ここにゲームを置く
-     </div>
       <Link to="/">Back to Home</Link>
     </div>
   );
