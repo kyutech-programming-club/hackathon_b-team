@@ -1,15 +1,29 @@
+import React, { useState } from 'react';
 
-function Adv6() {
-    return (
-      <div style={{position:"absolute",top:"0",left:"0"}}>
-  
-    
-      <img style={{position:"relative",width:"400px"}} src="https://www.kyutech.ac.jp/archives/025/201907/large-ac3c915465b74aaec1d59643eaa3b840.jpg" />
-<button style={{position:"absolute",top:0,left:370}}>×</button>   
+const Adv6 = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsOn(prevState => !prevState);
+  };
+
+  return (
+    <div style={{zIndex:20}}>
+      <h3></h3>
+      <p> {isOn ? 
+     ""
+      :<div>
+        <img style={{height:"500px",top:"20px",position:"absolute"}} src="https://ascii.jp/img/2018/06/06/660828/l/86dda56a57bd2eb8.jpg" alt="image" />
+              <button style={{top:"0px",left:"350px",position:"absolute"}} onClick={toggleSwitch}>×</button>  
       
-      </div>
-      
-    );
-  }
-  
-  export default Adv6
+
+
+      </div>}</p>
+     
+     
+    </div>
+  );
+};
+
+
+export default Adv6;

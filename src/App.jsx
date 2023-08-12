@@ -5,11 +5,9 @@ import  Mypage from './Mypage';
 import  Register  from "./Register";
 import  Login  from "./Login";
 import  Ranking  from "./components/ranking";
-
-
 import './App.css';
 
-function App() {
+function App () {
   return (
     <BrowserRouter>
       <div className="App">

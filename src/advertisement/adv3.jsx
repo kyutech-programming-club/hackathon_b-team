@@ -1,15 +1,27 @@
+import React, { useState } from 'react';
 
-function Adv3() {
-    return (
-      <div style={{}}>
-  
-    
-      <img style={{position:"relative",width:"500px"}} src="https://img.huffingtonpost.com/asset/5c636cec20000001016e322e.png?ops=scalefit_720_noupscale&format=webp" />
-<button style={{position:"absolute",top:0,left:470}}>×</button>   
-      
-      </div>
-      
-    );
-  }
-  
-  export default Adv3
+const Adv3 = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsOn(prevState => !prevState);
+  };
+
+  return (
+    <div style={{zIndex:36}}>
+      <h3></h3>
+      <p> {isOn ? 
+     ""
+      :<div>
+          <img style={{width:"400px",top:"20px",position:"absolute"}} src="https://media.loom-app.com/bi/dist/images/2020/09/11/5f5a5f37e6ff30001d4e8163.jpg" alt="image" />
+      <button style={{top:"50px",left:"350px",position:"absolute"}} onClick={toggleSwitch}>×</button>  
+ 
+      </div>}</p>
+     
+     
+    </div>
+  );
+};
+
+
+export default Adv3;
