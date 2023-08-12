@@ -76,21 +76,23 @@ export const Page1 = () => {
               Result: {timer.toFixed(1)} seconds
             </p>
           )}
+                <div style={{ position: "absolute", }}>
+        <Random ></Random>
+      </div>
+
+      <div style={{ position: "absolute", top: "200px", left: "200px", zIndex: -50 }}>
+        <Adv2></Adv2>
+        </div>
+      <div style={{ position: "absolute", top: 550 }}>
+      </div>
+
           {isRunning && (
             <button style={{ position: "absolute", left: "200px", zIndex: -100, top: "200px" }} onClick={handleStop}>Complete</button> // タイマーを停止するボタン
+            
           )}
         </>
       )}
-      <div style={{ position: "absolute", }}>
-        <Random ></Random>
-
-      </div>
-      <div style={{ position: "absolute", top: "200px", left: "200px", zIndex: -50 }}><Adv2></Adv2></div>
-      <div style={{ position: "absolute", top: 550 }}>
-
-        <Link to="/">Back to Home</Link>
-
-      </div>
+      <Link to="/">Back to Home</Link>
     </div>
   );
 };
