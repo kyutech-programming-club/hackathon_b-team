@@ -1,41 +1,47 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Adv6 = () => {
+const Adv7 = () => {
   const [isOn, setIsOn] = useState(false);
 
   const toggleSwitch = () => {
     setIsOn((prevState) => !prevState);
+    
   };
   const navigate=useNavigate();
   const toNext = () => {
     navigate("/gameover")}
   return (
-    <div style={{ zIndex: 20 ,left:"50%"}}>
+    <div style={{ zIndex: 59 }}>
       <h3></h3>
       <p>
-        {" "}
+        {""}
         {isOn ? (
-          ""
+         ""
         ) : (
           <div>
             <img
               style={{
-                height: "500px",
-                top: "20px",
+                width: "900px",
+                zIndex: 10,
+                top: "50px",
                 position: "absolute",
-                left: "200px",
-                
+                left:"360px"
               }}
-              src="https://ascii.jp/img/2018/06/06/660828/l/86dda56a57bd2eb8.jpg"
+              src="https://img.freepik.com/free-photo/joyful-sporty-black-guy-running-by-city-pond_1262-12697.jpg"
               alt="image"
               onClick={toNext}
             />
             <button
-              style={{ top: "30px", left: "520px", position: "absolute" }}
+              style={{
+                zIndex: 20,
+                top: "55px",
+                left: "1240px",
+                position: "absolute",
+            }}
               onClick={toggleSwitch}
             >
-              ×
+             ×
             </button>
           </div>
         )}
@@ -44,4 +50,4 @@ const Adv6 = () => {
   );
 };
 
-export default Adv6;
+export default Adv7;

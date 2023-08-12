@@ -1,23 +1,19 @@
 // gamepage.jsx
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './gamepage.css';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./gamepage.css";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db, auth } from "../FirebaseConfig";
-import Random from './Ramdom';
-import Adv2 from '../advertisement/adv2';
+import Random from "./Ramdom";
 
 export const Page1 = () => {
-
-
-
   const [countdown, setCountdown] = useState(3);
   const [timer, setTimer] = useState(0);
-  const [isRunning, setIsRunning] = useState(true); // 最初はタイマーを動作させる
-  const [isTimerVisible, setIsTimerVisible] = useState(false); // タイマー表示の制御
+  const [isRunning, setIsRunning] = useState(true);
+  const [isTimerVisible, setIsTimerVisible] = useState(false);
 
   const handleStop = () => {
-    setIsRunning(false); // タイマー停止
+    setIsRunning(false);
     const user = auth.currentUser;
 
     if (user) {
@@ -26,13 +22,7 @@ export const Page1 = () => {
         userId: user.uid,
         time: timer.toFixed(1), // タイマーの値を保存
         timestamp: new Date(),
-      })
-        .then(() => {
-          // 保存完了後の処理
-        })
-        .catch((error) => {
-          // エラーハンドリング
-        });
+      });
     }
   };
 
@@ -41,14 +31,12 @@ export const Page1 = () => {
 
     if (countdown > 0) {
       countdownInterval = setInterval(() => {
-        setCountdown(prevCountdown => prevCountdown - 1);
-
+        setCountdown((prevCountdown) => prevCountdown - 1);
       }, 1000);
     } else if (isRunning) {
       setIsTimerVisible(true); // カウントダウン終了後にタイマーを表示
       const timerInterval = setInterval(() => {
-        setTimer(prevTimer => prevTimer + 0.1);
-
+        setTimer((prevTimer) => prevTimer + 0.1);
       }, 100);
 
       return () => {
@@ -61,38 +49,37 @@ export const Page1 = () => {
     };
   }, [countdown, isRunning]);
 
-
-
-
   return (
-    <div>
-      <h1>gamepage</h1>
+    <div style={{ backgroundColor: "white" }}>
       {countdown > 0 ? (
-        <p>Countdown: {countdown}</p>
+        <p style={{ fontSize: "300px" }}>{countdown}</p>
       ) : (
         <>
           {isTimerVisible && (
-            <p className={`timer ${isRunning ? '' : 'timer-stopped'}`}>
+            <p className={`timer ${isRunning ? "" : "timer-stopped"}`}>
               Result: {timer.toFixed(1)} seconds
             </p>
           )}
-                <div style={{ position: "absolute", }}>
-        <Random ></Random>
-      </div>
-
-      <div style={{ position: "absolute", top: "200px", left: "200px", zIndex: -50 }}>
-        <Adv2></Adv2>
-        </div>
-      <div style={{ position: "absolute", top: 550 }}>
-      </div>
-
+          <div style={{ position: "absolute" }}>
+            <Random></Random>
+          </div>
           {isRunning && (
-            <button style={{ position: "absolute", left: "200px", zIndex: -100, top: "200px" }} onClick={handleStop}>Complete</button> // タイマーを停止するボタン
-            
+            <button
+              style={{
+                position: "absolute",
+                left: "600px",
+                zIndex: -100,
+                top: "200px",
+                width: 100,
+              }}
+              onClick={handleStop}
+            >
+              Complete
+            </button> // タイマーを停止するボタン
           )}
         </>
       )}
-      <Link to="/">Back to Home</Link>
+      <Link to="/" style={{position: 'absolute',top: "500px",left: '0px'}}>Back to Home</Link>
     </div>
   );
 };
